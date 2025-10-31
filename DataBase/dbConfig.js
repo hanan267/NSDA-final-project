@@ -1,13 +1,16 @@
+const { PROCESSING } = require('http-status-codes');
 const mysql = require('mysql2'); 
 
 const dbconnection = mysql.createPool(
-  {user: "evangadi-admin",
-    database:"evangadi.db",
+  {user: process.env.USER,
+    database:process.env.DATABASE,
     host: "localhost",
-    password: "123456",
+    password: process.env.PASSWORD,
     connectionLimit: 10
   }
 )
+
+console.log(process.env.JWT_SECRET)
 // dbconnection.execute("select 'test' ", (err, result) => {
 //   if (err) {
 //     console.log(err.message);
